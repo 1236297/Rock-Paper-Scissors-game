@@ -29,7 +29,7 @@ const Home = () => {
                 <div className="absolute bottom-[80px] flex justify-center items-center bg-white w-[155px] h-[155px] rounded-full transform translate-y-1/2">
                   <img src={paper} alt="Paper" className="w-20 h-20 cursor-pointer" onClick={() => handleUserChoice('paper')} />
                 </div>
-                <div>button</div>
+              
               </div>
             </div>
           </div>
