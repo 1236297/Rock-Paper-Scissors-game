@@ -1,24 +1,26 @@
-import React from 'react'
-import logo from '../Assets/logo.svg';
-const Scorebar = () => {
+import React, { useEffect, useState } from 'react';
+
+type ScorebarProps = {
+  result: string | null;
+};
+
+const Scorebar: React.FC<ScorebarProps> = ({ result }) => {
+  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    if (result === 'You Win') {
+      setScore((prevScore) => prevScore + 1);
+    } else if (result === 'You Lose') {
+      setScore((prevScore) => (prevScore > 0 ? prevScore - 1 : 0));
+    }
+  }, [result]);
+
   return (
-    <>
-       <div className='bg-opacity-100 ml-[100px]  w-[900px] content-start mt-[50px] ring-2 ring-white ring-opacity-50 rounded-md flex'>
+    <div className="bg-gray-800 text-white p-4 rounded-md flex justify-between items-center">
+      <h2 className="text-2xl font-bold">Score</h2>
+      <div className="text-2xl">{score}</div>
+    </div>
+  );
+};
 
-         <div><img src={logo} alt="logo" className='w-[200px] m-[20px] '/></div>
-       
-         <div className='bg-white rounded-md w-[160px] h-[160px] ml-[400px] m-[20px]'>
-         <div className=' text-[#3e52a3] font-bold ml-[50px] mt-3 '>
-         SCORE
-         </div>
-         <div className=' text-8xl  ml-[50px] w-[100px] h-[120px] text-[#3b4363] mt-0 '>0</div>
-         </div>
-      
-
-         </div>
-
-    </>
-  )
-}
-
-export default Scorebar
+export default Scorebar;
